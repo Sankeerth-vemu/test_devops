@@ -1,14 +1,21 @@
 name: Run and build application 
+
 on : push
+
 jobs:
  build:
    runs-on: ubuntu-latest
+   
    steps:
     - name: checkout code 
       uses: actions/checkout@v3
+    - name: set up Node.js
+      uses: actions/setup-node@v3
       with: 
         node-version: '16'
+        
     - name: install dependencies
       run: npm install
+      
     - name: Run tests
       run: npm test
